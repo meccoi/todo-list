@@ -1,110 +1,51 @@
-<html>
-    <head>
-        <title>PWA</title>
-        <link rel="manifest" href="manifest.json">
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <style>
-      .active{
-        opacity: .7;
-      }
-    </style>
-    <body class="bg-gray-100 text-gray-900 px-4 py-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <link rel="manifest" href="manifest.json">
+<style>
+    #con a{
+        font-size: 44px;
+        text-decoration: underline;
+    }
+
+    #con{
+        padding-top: 6em;
+    }
+</style>
+</head>
+<body>
+  
+    <div id="con" class="container mx-auto mt-4 flex justify-start items-center h-full flex-col gap-12">
+        <a href="todo-list.html">Todo List App</a>
+    
         
-        <div class="m-5 md:w-1/2 mx-auto">
-            <h2 class="text-lg font-bold">Progressive Web Apps (PWAs)</h2>
-            <p class="text-sm">Progressive Web Apps (PWAs) are web applications that load like regular web pages or websites but can offer the user functionality such as working offline, push notifications, and device hardware access traditionally available only to native mobile applications. PWAs combine the best features of the web and mobile apps.</p>
-        </div>
-        
-        <div class="form-container md:w-1/2 mx-auto">
-          <div class="form-navigation my-14 mb-5 text-center">
-            <button id="loginBtn" class="py-2 px-4 bg-blue-500 text-white rounded" onclick="showLoading()">Login</button>
-            <button id="signupBtn" class="py-2 px-4 bg-green-500 text-white rounded" onclick="showLoading()">Sign Up</button>
-          </div>
-
-          <div id="loginForm" class="form-content">
-            <h2 class="text-lg font-bold">Login</h2>
-            <form id="loginFormContent" class="space-y-4">
-                <label for="loginEmail" class="block">Email:</label>
-                <input type="email" id="loginEmail" name="email" required class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
-                <label for="loginPassword" class="block">Password:</label>
-                <input type="password" id="loginPassword" name="password" required class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Login</button>
-            </form>
-        </div>
-        
-          <div id="signupForm" class="form-content" style="display: none;">
-              <h2 class="text-lg font-bold">Sign Up</h2>
-              <form id="signupFormContent" class="space-y-4">
-                  <label for="signupEmail" class="block">Email:</label>
-                  <input type="email" id="signupEmail" name="email" required class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
-                  <label for="signupPassword" class="block">Password:</label>
-                  <input type="password" id="signupPassword" name="password" required class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
-                  <label for="signupConfirmPassword" class="block">Confirm Password:</label>
-                  <input type="password" id="signupConfirmPassword" name="confirmPassword" required class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
-                  <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Sign Up</button>
-              </form>
-          </div>
-        </div>
-
-        <div class="m-5 md:w-1/2 mx-auto">
-            <a href='hanzelonlinesilogan.free.nf' class="text-blue-500 hover:underline"> click me</a>
-        </div>
-    </body>
-    <script>
-        function showLoading() {
-            const loading = document.createElement('div');
-            loading.classList.add('fixed', 'inset-0', 'z-50', 'flex', 'items-center', 'justify-center', 'bg-black', 'bg-opacity-30');
-            loading.innerHTML = '<div class="loader"><img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif" style="width: 80px; height: 80px;"></div>';
-            document.body.appendChild(loading);
-
-            setTimeout(() => {
-                loading.remove();
-            }, 600);
-        }
-
-        window.addEventListener('load', () => {
-          registerSW();
-        });
-     
-        // Register the Service Worker
-        async function registerSW() {
-          if ('serviceWorker' in navigator) {
-            try {
-              await navigator
-                    .serviceWorker
-                    .register('serviceworker.js');
-            }
-            catch (e) {
-              console.log('SW registration failed');
-            }
-          }
-        }
-
-        // Add event listeners to the buttons to trigger the toggle
-        document.getElementById('loginBtn').addEventListener('click', () => {
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-
-            loginForm.style.display = 'block';
-            signupForm.style.display = 'none';
-
-            // Add active class to the clicked button
-            document.getElementById('loginBtn').classList.add('active');
-            document.getElementById('signupBtn').classList.remove('active');
-        });
-
-        document.getElementById('signupBtn').addEventListener('click', () => {
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-
-            loginForm.style.display = 'none';
-            signupForm.style.display = 'block';
-
-            // Add active class to the clicked button
-            document.getElementById('signupBtn').classList.add('active');
-            document.getElementById('loginBtn').classList.remove('active');
-        });
-     </script>
+    </div>
+</body>
 </html>
+
+<script>
+    window.addEventListener('load', () => {
+  registerSW();
+});
+
+// Register the Service Worker
+async function registerSW() {
+  if ('serviceWorker' in navigator) {
+    try {
+      await navigator
+            .serviceWorker
+            .register('serviceworker.js');
+    }
+    catch (e) {
+      console.log('SW registration failed');
+    }
+  }
+}
+</script>
+
+
