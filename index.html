@@ -6,7 +6,7 @@
     <title>My Projects</title>
      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
-
+    <link rel="manifest" href="manifest.json">
 <style>
     #con a{
         font-size: 44px;
@@ -27,5 +27,25 @@
     </div>
 </body>
 </html>
+
+<script>
+    window.addEventListener('load', () => {
+  registerSW();
+});
+
+// Register the Service Worker
+async function registerSW() {
+  if ('serviceWorker' in navigator) {
+    try {
+      await navigator
+            .serviceWorker
+            .register('serviceworker.js');
+    }
+    catch (e) {
+      console.log('SW registration failed');
+    }
+  }
+}
+</script>
 
 
