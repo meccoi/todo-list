@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-List</title>
+     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <style>
+     body{
+        padding: .9em;
+     }
+
+     a{
+        font-size: 25px;
+        text-decoration: underline;
+     }
+        @keyframes error {
+         0% {
+        transform: translateX(-10px);
+    }
+    25% {
+        transform: translateX(10px);
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+    75% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+        }
+        .inputContainer.error input{
+            animation: error 0.4s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+
+    </nav>
+    <div class="container lg:w-1/2 px-4 mx-auto mt-4">
+        <h1 class="text-2xl font-bold mb-4">Todo-List</h1>
+        <div class="ui input mb-4 w-full flex gap-2 inputContainer">
+            <input type="text" id="input" placeholder="Add a new task" class=" mb-4 ">
+            <button id="add" class="ui primary button w-1/6">Add</button>
+        </div>
+
+        <ul id="list" class=""></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<script>
+            window.addEventListener('load', () => {
+          registerSW();
+        });
+     
+        // Register the Service Worker
+        async function registerSW() {
+          if ('serviceWorker' in navigator) {
+            try {
+              await navigator
+                    .serviceWorker
+                    .register('serviceworker.js');
+            }
+            catch (e) {
+              console.log('SW registration failed');
+            }
+          }
+        }
+</script>
